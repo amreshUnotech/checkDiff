@@ -3,26 +3,27 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider'
 import InputAdornment from '@material-ui/core/InputAdornment';
-import VerifyKey from '../../assets/VerifyKey.png'
+import VerifyKey from '../../assets/img/VerifyKey.png'
 import { callApi } from '../../utils/api';
 import { decideToken } from './_decide'
 import validator from 'validator'
+import VerifyPushNotify from './VerifyPushNotify';
 // import OtpInput from 'react-otp-input';
 
 const defaultOtp = {
-  Otp: ''
+  Otp:''
 }
 export default function SignUpTY(props) {
   const [value, setValue] = React.useState()
   const [saving, setSaving] = React.useState(false)
   const [newOtp, setNewOtp] = React.useState(defaultOtp)
   const [errors, _setErrors] = React.useState({})
-
-  const change = e => setNewOtp({ ...newOtp, ...e })
+  const change = e => {setNewOtp({ ...newOtp, ...e })
+  console.log(e.Otp)
+  }
   const setError = e => _setErrors({ ...errors, ...e })
   const isValid = newOtp.Otp
-  const checkOtp = () => setError({ Otp: validator.isNumeric(newOtp.Otp) ? null : 'OTP is Invalid' })
-
+  const checkOtp = () => setError({ Otp: validator.isNumeric(newOtp.Otp)  ? null : 'OTP is Invalid' })
   const checkTOTP = async () => {
     setSaving(true)
     return callApi(`/authsrvc/auth/loginFlow`, 'POST', {
@@ -54,6 +55,9 @@ export default function SignUpTY(props) {
   if (props.match.params.id === 'SMSAuthenticator') {
     text = 'Enter the access code that was sent to your registered number.'
   }
+  if (props.match.params.id === 'PushAuthenticator') {
+    text = 'Please accept the request on your device.'
+  }
 
   const onKeyD = (event) => {
     if (event.key === 'Enter' && isValid) {
@@ -76,12 +80,15 @@ export default function SignUpTY(props) {
           separator={<span>-</span>}
         />
       </div> */}
+
+      {props.match.params.id === 'PushAuthenticator' ? <VerifyPushNotify {...props}/> : 
+      <>
       <TextField className="text-field" id="bookmark" value={newOtp.Otp}
-        onChange={(e) => change({ Otp: e.target.value })}
+        onChange={(e) => change({Otp: e.target.value})}
         onBlur={checkOtp}
         helperText={errors.Otp}
-        error={!!errors.Otp}
         onKeyDown={(e) => onKeyD(e)}
+        error={!!errors.Otp}
         // numInputs={6}
         // min={0}
         // max={999999}
@@ -96,12 +103,14 @@ export default function SignUpTY(props) {
           ),
         }} />
 
-      <Button disabled={!isValid || saving} onClick={checkTOTP}
-        variant="contained"
-        color="primary"
-        style={{ float: 'right', borderRadius: '8px', marginTop: '20px', }}>
+      <Button  disabled={!isValid || saving } onClick={checkTOTP}
+      variant="contained"
+      color="primary"
+      style={{ float: 'right', borderRadius: '8px', marginTop:'20px',  }}>
         {!saving ? 'Verify' : 'Verifying'}
       </Button>
+      </>
+}
     </div>
   )
 }

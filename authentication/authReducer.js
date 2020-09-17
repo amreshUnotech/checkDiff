@@ -6,6 +6,17 @@ const defaultState = {
   user: null
 };
 
+const resetState = {
+  form: null,
+  auth: null,
+  userProfileReducer: null,
+  snackbarReducer:null,
+  inboxReducer:null,
+  applcationReducer:null,
+  settingsReducer:null,
+  welcomeReducer:null
+}
+
 export default (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
@@ -27,9 +38,7 @@ export default (state = defaultState, action) => {
       };
 
     case LOGOUT:
-      return {
-        ...defaultState
-      }
+      return {...resetState}
 
     default:
       return state;

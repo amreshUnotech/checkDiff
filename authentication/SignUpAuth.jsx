@@ -7,13 +7,8 @@ import Button from '@material-ui/core/Button'
 import Radio from '@material-ui/core/Radio'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import RadioGroup from '@material-ui/core/RadioGroup';
-import Paper from '@material-ui/core/Paper'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import LogoCCIO from '../../assets/LogoCCIO.png'
-import LogoNoSpace from '../../FrontendDesigns/master-screen-settings/assets/img/icons/logo-nospace.svg'
-import '../../FrontendDesigns/master-screen-settings/assets/css/main.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/nice-select.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/react-sign-up.css'
+import LogoNoSpace from '../../assets/img/icons/logo-nospace.svg'
+
 
 const useStyles = makeStyles((theme) => ({
 radio: {
@@ -42,7 +37,7 @@ export default function SignUpAuth(props) {
             <p className="mb-0">{type[0] === 'cymmetri' ? "Cymmetri Authenticator" : type[0] === 'google' ? "Google Authenticator" : "SMS Authenticator"} <br/>
               <span>Enter single-use code from mobile app</span></p>
             </a>
-        </div>     
+        </div>
       </div>
       <hr />
       <div style={{display: 'flex',marginTop:'16px'}}>

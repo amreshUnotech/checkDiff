@@ -1,18 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-// import Grid from '@material-ui/core/Grid'
-// import Paper from '@material-ui/core/Paper';
 
-// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-// import LogoCCIO from '../../assets/LogoCCIO.png'
-import LogGAuth from '../../assets/google-authenticator.png'
-import LogoSMS from '../../assets/sms.png'
-import LogoSecretQ from '../../assets/faq.png'
+import LogGAuth from '../../assets/img/google-authenticator.png'
+import LogoSMS from '../../assets/img/sms.png'
+import LogoSecretQ from '../../assets/img/faq.png'
 import { callApi } from '../../utils/api';
-import LogoNoSpace from '../../FrontendDesigns/master-screen-settings/assets/img/icons/logo-nospace.svg'
-import '../../FrontendDesigns/master-screen-settings/assets/css/main.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/nice-select.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/react-sign-up.css'
+import LogoNoSpace from '../../assets/img/icons/logo-nospace.svg'
+
 
 export default function SignUpAuth() {
   const [mfa, setMFA] = React.useState([])
@@ -25,7 +19,7 @@ export default function SignUpAuth() {
           // showSuccess('User Verification by Email Succesfully')
           // setVerify(true)
           setMFA(e.data)
-
+          console.log(e)
         }
       })
   }

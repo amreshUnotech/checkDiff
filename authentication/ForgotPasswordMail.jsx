@@ -1,5 +1,5 @@
 import React from 'react'
-import ThanksYouLogo from '../../assets/ThanksYouLogo.png'
+import ThanksYouLogo from '../../assets/img/ThanksYouLogo.png'
 import { getQueryString } from '../../utils/url'
 
 export default function SignUpTY(props) {

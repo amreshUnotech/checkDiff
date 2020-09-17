@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import ThanksYouLogo from '../../assets/ThanksYouLogo.png'
+import ThanksYouLogo from '../../assets/img/ThanksYouLogo.png'
 import BookmarkIcon from '@material-ui/icons/Bookmark'
 import { getQueryString } from '../../utils/url'
 import {CopyToClipboard} from 'react-copy-to-clipboard';

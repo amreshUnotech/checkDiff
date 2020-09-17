@@ -5,12 +5,13 @@ import * as _ from 'underscore'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { callApi } from '../../utils/api'
-import AppSelectInput from '../../components/form/AppSelectInput'
-import AppTextInput from '../../components/form/AppTextInput'
-import Edit from '../../FrontendDesigns/new/assets/img/icons/edit.svg'
+import AppSelectInput from './AppSelectInput'
+import AppTextInput from './AppTextInput'
+import Edit from '../../assets/img/icons/edit.svg'
 import { decideToken } from './_decide'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField from '@material-ui/core/TextField'
+
 
 
 const useStyles = makeStyles(() => ({
@@ -195,13 +196,11 @@ export default function SignUpQuestions(props) {
 
 
         <Grid item xs={12} style={{ paddingTop: 0 }}>
-        {questionsLen.length === maxQuestions ? (
           <Button
             variant="contained"
             style={{ float: 'right', marginRight: 10 }}
             color="primary" onClick={submitAnswers}
             disabled={isLoading || questionsLen.filter(q => q.type === 'editable').length !== maxQuestions}>{!isLoading ? 'Continue' : 'Loading...'}</Button>
-        ):<></>}
         </Grid>
       </Grid>
     </div>

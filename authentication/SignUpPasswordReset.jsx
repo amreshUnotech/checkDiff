@@ -33,11 +33,13 @@ export default function SignUpPasswordReset (props) {
 
   const submitRegistrationForm = async () => {
     // if (!isValid) return
+    console.log('before', form)
     const data = {
       newPassword: encrypt(localStorage.getItem('user'), form.newPassword),
       currentPassword: encrypt(localStorage.getItem('user'), form.oldPassword),
       userId: localStorage.getItem('user')
     }
+    console.log('after', data)
 
     setLoading(true)
 
@@ -90,7 +92,7 @@ export default function SignUpPasswordReset (props) {
         helperText={errors.newPassword}
         type="password"
         style={{ marginTop: 15 }}
-        className="text-field" id="password" label="New Password" placeholder="New Password"
+        className="text-field" id="password" label="New Password" placeholder="Repeat Password"
         variant="outlined" fullWidth
         InputProps={{
           startAdornment: (
@@ -109,7 +111,7 @@ export default function SignUpPasswordReset (props) {
         onKeyDown={(e) => onKeyD(e)}
         style={{ marginTop: 15 }}
         onKeyDown={(e) => onKeyD(e) }
-        className="text-field" id="password" label="Confirm Password" placeholder="Confirm Password"
+        className="text-field" id="password" label="Confirm Password" placeholder="Repeat Password"
         variant="outlined" fullWidth
         InputProps={{
           startAdornment: (

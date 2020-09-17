@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route, Redirect } from "react-router-dom"
 
-import LogoCYMM from '../../assets/LogoCYMM.png'
-import HumanLogo from '../../assets/HumanLogo.png'
+import LogoCYMM from '../../assets/img/LogoCYMM.png'
+import HumanLogo from '../../assets/img/HumanLogo.png'
 import Hidden from '@material-ui/core/Hidden'
 import Login from './Login'
 import SignUp from './SignUpMain'
@@ -19,8 +19,12 @@ import SignUpMultiAuthVerify from './SignUpMultiAuthVerify'
 import ForgotPasswordID from './ForgotPasswordID'
 import ForgotPasswordMail from './ForgotPasswordMail'
 import ForgotPasswordReset from './ForgotPasswordReset'
+import SignUpQRRegister from './SignUpQRRegister'
 
 import './style.sass'
+import '../../assets/css/main.css'
+import '../../assets/css/nice-select.css'
+import '../../assets/css/react-sign-up.css'
 
 
 export default function AuthModule() {
@@ -47,6 +51,7 @@ export default function AuthModule() {
               <Route exact={true} path="/auth/signup/password/:token" component={SignUpPassword} />
               <Route exact={true} path="/auth/signup/thank_you" component={SignUpTY} />
               <Route exact={true} path="/auth/signup/auth/:id" component={SignUpAuth} />
+              <Route exact={true} path="/auth/signup/auth/push/:id" component={SignUpQRRegister} />
               <Route exact={true} path="/auth/signup/multiauth-setup" component={SignUpMultiAuth} />
               <Route exact={true} path="/auth/signup/multiauth-verify" component={SignUpMultiAuthVerify} />
               <Route exact={true} path="/auth/signup/verify/:id" component={SignUpVerify} />
