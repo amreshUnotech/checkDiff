@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { callApi } from '../../utils/api'
+import { callApi,getTenant } from '../../utils/api'
 import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import { decideToken } from './_decide'
 import { encrypt } from '../../utils/encrypt';
@@ -18,14 +18,6 @@ export default function SignUpPasswordReset (props) {
   const token = props.match.params.token
 
   const jwtPayload = jwt.decode(token)
-
-  const getTenant = () => {
-    if (window.location.origin.includes('localhost')) return 'qc6'
-    return window.location.origin.split('.')[0]
-      .replace('http://', '')
-      .replace('https://', '')
-      .replace(':3000', '')
-  }
 
   if (!token) {
     setLoading(true)
@@ -119,7 +111,7 @@ export default function SignUpPasswordReset (props) {
           onKeyDown={(e) => onKeyD(e)}
           type="password"
           style={{ marginTop: 15 }}
-          className="text-field" id="password" label="Confirm Password" placeholder="Confirm Password"
+          className="text-field" id="password" label="Confirm Password" placeholder="Repeat Password"
           variant="outlined" fullWidth
           InputProps={{
             startAdornment: (

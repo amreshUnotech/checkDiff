@@ -6,18 +6,16 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import {IconButton} from '@material-ui/core';
+import {IconButton} from '@material-ui/core'
 
-import VpnKeyIcon from '@material-ui/icons/VpnKey'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import MaterialDesignIcon from '@mdi/react'
-import { mdiGoogle, mdiFacebook } from '@mdi/js'
-import { callLoginApi, callApi } from '../../utils/api'
-import { encrypt } from '../../utils/encrypt'
+import { callLoginApi } from '../../utils/api'
 import { decideToken } from './_decide'
-import { makeStyles } from '@material-ui/core/styles';
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import { encrypt } from '../../utils/encrypt'
+import { makeStyles } from '@material-ui/core/styles'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff"
+import VpnKeyIcon from '@material-ui/icons/VpnKey'
 
 const useStyles = makeStyles(() => ({
   marginzero: {
@@ -72,21 +70,21 @@ export default function Login(props) {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const submitRegistrationForm = async () => {
+    const neoeyed = window.neoEYED.dumpBehavior("login", form.login);
+    console.log(neoeyed)
+    setLoading(true)
 
-    let data = {
+    console.log('using password', form.password)
+
+    const data = {
       ...form,
       password: encrypt(form.login, form.password),
     }
 
-    const neoeyed = window.neoEYED.dumpBehavior("login", form.login);
-    setLoading(true)
-
-    if ( neoeyed ) data = { ...data, behavior: neoeyed }
-
     await localStorage.setItem('user', form.login)
     callLoginApi(`/authsrvc/auth/token`, 'POST', data)
       .then(async e => {
-
+        console.log(e)
         if (e.success) decideToken(props, e.data.token, e.data.refreshToken)
       })
       .then(() => setLoading(false))
@@ -121,7 +119,7 @@ export default function Login(props) {
             onBlur={checkEmail}
             helperText={errors.login}
             onChange={e => setForm({ login: e.target.value })}
-            className="text-field" id="email" label="Username"
+            className="text-field" id="email" label="Username or Email"
             variant="outlined" placeholder="jon@mail.com" fullWidth
             InputProps={{
               startAdornment: (
@@ -141,7 +139,6 @@ export default function Login(props) {
             onKeyDown={(e) => onKeyD(e)}
             onChange={e => setForm({ password: e.target.value })}
             // onKeyDown={submitRegistrationForm}
-            onKeyDown={(e) => onKeyD(e) }
             className="text-field" id="password" label="Password"
             variant="outlined" placeholder="Password" fullWidth
             type={showPassword ? "text" : "password"}

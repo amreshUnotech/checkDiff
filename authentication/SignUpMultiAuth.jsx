@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper';
+import LogoNoSpace from '../../assets/img/icons/logo-nospace.svg'
 
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import LogoCCIO from '../../assets/LogoCCIO.png'
-import LogoNoSpace from '../../FrontendDesigns/master-screen-settings/assets/img/icons/logo-nospace.svg'
-import '../../FrontendDesigns/master-screen-settings/assets/css/main.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/nice-select.css'
-import '../../FrontendDesigns/master-screen-settings/assets/css/react-sign-up.css'
 
 export default function SignUpAuth() {
   return (
@@ -23,7 +16,7 @@ export default function SignUpAuth() {
             <p className="mb-0">Cymmetri Authenticator <br/>
               <span>Enter single-use code from mobile app</span></p>
             </a>
-        </div> 
+        </div>
         </Link>
       <br />
     </div>

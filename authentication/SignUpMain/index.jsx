@@ -21,7 +21,7 @@ export default function SignUp (props) {
     callMasterApi(`/utilsrvc/meta/pub/list/country`, 'GET')
       .then(e => { if (e.success) {
         setCountries(e.data ? e.data : [])
-
+        console.log(e)
       }})
   }
 

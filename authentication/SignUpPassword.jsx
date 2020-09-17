@@ -121,7 +121,6 @@ export default function SignUpPassword (props) {
         onKeyDown={(e) => onKeyD(e)}
         type="password"
         style={{ marginTop: 15 }}
-        onKeyDown={(e) => onKeyD(e) }
         className="text-field" id="password" label="Repeat Password" placeholder="Repeat Password"
         variant="outlined" fullWidth
         InputProps={{

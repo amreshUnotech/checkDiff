@@ -67,12 +67,11 @@ export const decideToken = async (props, jwtTokenData, refreshToken) => {
     //   .then(e => { if (e.success) {
     //     decideToken(props, e.data.token, e.data.refreshToken)
     //     showSuccess("Welcome! You are logged in", 'success')
-    //     localStorage.setItem('userJson', JSON.stringify(jwtPayload))
     //     return props.history.push('/dash')
     //   }})
     showSuccess("Welcome! You are logged in", 'success')
     store.dispatch(setUser(jwtPayload))
-    return props.history.push('/dash')
+    return props.history.push('/welcome')
   }
 
   alert("unkown action in the token")

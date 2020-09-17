@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider'
 import InputAdornment from '@material-ui/core/InputAdornment';
-import VerifyKey from '../../assets/VerifyKey.png'
+import VerifyKey from '../../assets/img/VerifyKey.png'
 
 
 export default function SignUpTY() {
